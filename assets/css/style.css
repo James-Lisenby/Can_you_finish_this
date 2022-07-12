@@ -1,0 +1,43 @@
+HEADER {
+    border-style: solid;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5%
+    
+}
+#Random_Quote_Button {
+    margin: auto;
+    block-size: auto;
+    background-color: aqua; 
+    display: flex;
+
+}
+
+#Push_Button{
+    background-color: aqua;
+    margin: auto;
+    column-width: 50%;
+    display: flex;
+}
+
+#resultDisplay {
+    align-items: left;
+    height: 250px;
+    width: 250px;
+    margin: 5px;
+    padding: 5px;
+    border: 5px solid black;
+    display: flex;
+}
+#watchList {
+    align-items: center;
+    display: flex;
+    height: 250px;
+    width: 250px;
+    margin: 5px;
+    padding: 5px;
+    border: 5px solid black;
+}
+

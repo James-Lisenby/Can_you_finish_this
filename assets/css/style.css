@@ -1,0 +1,64 @@
+body {
+    display: block;
+}
+
+
+
+
+#resultDisplay {
+    height: 250px;
+    width: 250px;
+    margin: 5px;
+    padding: 5px;
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+#watchList {
+    display: flex;
+    height: 250px;
+    width: 250px;
+    margin: 5px;
+    padding: 5px;
+    border: 5px solid black;
+    justify-content: center;
+}
+
+.hero {
+    text-align: center;
+    background-color: darkolivegreen;
+}
+
+#prefrenceBox {
+    height: 500px;
+    width: 500px;
+    padding: 5px;
+    margin: 5px;
+    border: 5px solid black;
+    float: left;
+
+}
+
+.checkbox {
+    margin: 15px;
+    padding: 15px;
+}
+
+#quoteBox {
+    height: 500px;
+    width: 500px;
+    padding: 5px;
+    margin: 5px;
+    border: 5px solid black;
+    text-align: center;
+    float: right;
+}
+
+.footer {
+    background-color: darkolivegreen;
+}
+
+#mainContainer {
+    display: flex;
+}

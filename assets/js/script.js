@@ -11,10 +11,15 @@ function getMovie() {
 })
   .then(function(data){
     console.log(data.results)
-    if (!data.results[i].poster_path){
-        //if null, we want to exclude that result from the for-loop
-    }
+    
     for (var i=0; i<20 && i<data.results.length;i++ ){
+
+        if (!data.results[i].poster_path){
+        continue
+        }
+        if (data.results[i].original_language!=="en"){
+            continue
+            }
 
         var myTitle = document.createElement('h3');
 

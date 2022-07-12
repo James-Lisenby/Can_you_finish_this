@@ -16,6 +16,7 @@ HEADER {
 }
 
 #Push_Button{
+    align-items: right;
     background-color: aqua;
     margin: auto;
     column-width: 50%;
@@ -23,13 +24,14 @@ HEADER {
 }
 
 #resultDisplay {
-    align-items: left;
+    align-items: center;
+    display: flex;
     height: 250px;
     width: 250px;
     margin: 5px;
     padding: 5px;
     border: 5px solid black;
-    display: flex;
+    
 }
 #watchList {
     align-items: center;

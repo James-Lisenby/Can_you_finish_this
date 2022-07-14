@@ -17,13 +17,16 @@ function storeRandomMovie() {
 }
 
 function addToList() {
-  var returnValue = document.getElementById().value,
+  var returnValue = document.getElementById("").textContent,
     // displayRandom will be the value of the displaying container.
-    listNode = document.getElementById("list ID"),
+    listNode = document.getElementById("saveMovie"),
     liNode = document.createElement("LI"),
     txtNode = document.createTextNode(returnValue);
   liNode.appendChild(txtNode);
   listNode.appendChild(liNode);
 }
+console.log(returnValue);
 // Adds result to "results" list.
 
+var button = getElementById("startBtn")
+button.addEventLisenter("click", addToList);

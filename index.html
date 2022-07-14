@@ -4,25 +4,93 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>WHAT WHAT WHAT</h1>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="title">
+          Can you finish it???
+        </p>
+      </div>
+    </section>
+  <div id="mainContainer">
+      <div id="resultDisplay">
+        <h1 id="movieResult"></h1>
+        <button class="button is-rounded" id="generate">Feeling lucky?</button>
 
-    <div id="result-display">
-      <h1 id="movie-result"></h1>
+      </div>
+      <div id="watchList">
+        <p>Saved Movies</p>
+        <ul id="saveMovie"></ul>
+      </div>
+
+    <div id="prefrenceBox">
+
+      <label id="YearInput">
+        <input type="number">
+        Year
+      </label>
+
+      <label id="OratedR" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Only rated R
+      </label>
+
+      <label id="EratedR" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        No rated R
+      </label>
+
+      <label id="Horror" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Horror
+      </label>
+
+      <label id="Comedy" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Comedy
+      </label>
+
+      <label id="Action" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Action
+      </label>
+
+      <label id="RomCom" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Rom-Com
+      </label>
+
+      <label id="Drama" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Drama
+      </label>
+
+      <label id="Satire" class="checkbox" enabled>
+        <input type="checkbox" enabled>
+        Satire
+      </label>
+
     </div>
-
-    <div id="watch-list">
-      <p>Saved Movies</p>
-      <ul id="save-movie"></ul>
+    <div id="quoteBox">
+      Random Quote That Means Nothing
     </div>
-
-    <script
+  </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+        <strong>Terrible Movie Finder</strong>
+      </p>
+    </div>
+  </footer>
+   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
-  </body>
+  <script src="assets/js/script.js"></script>
+</body>
+
 </html>

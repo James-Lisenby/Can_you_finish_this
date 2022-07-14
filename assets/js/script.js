@@ -101,7 +101,7 @@ var searchResults = []
 
 // retrieves list of movies from worst to best.
 function getMovie() {
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500with_watch_monetization_types=flatrate&poster_path=true`)
+  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true`)
   .then(function(response) {
     return response.json()
 })

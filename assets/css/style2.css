@@ -1,0 +1,38 @@
+body {}
+
+#header {
+    position: relative;
+    top: 0px;
+    text-align: center;
+    background-color: aquamarine;
+}
+
+h3 {
+    height: 250px;
+    width: 250px;
+    margin: 5px;
+    height: 5px;
+    border: 2px solid black;
+    display: flex;
+}
+
+#prefrenceBox {
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    height: 500px;
+    width: 500px;
+    border: 2px solid black;
+    float: right;
+}
+
+#footer {
+    height: 10%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: aquamarine;
+    text-align: center;
+    font-size: 25px;
+}

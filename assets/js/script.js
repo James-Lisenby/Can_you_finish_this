@@ -100,10 +100,20 @@ var searchResults = []
 // retrieves list of movies from worst to best.
 function getMovie() {
   fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true`)
-  .then(response => response.json())
-  .then(data => console.log(data))
+  .then(function(response) {
+    return response.json()
+})
   .then(function(data){
-    for (var i=0; i<20;i++ ){
+    console.log(data.results)
+    
+    for (var i=0; i<20 && i<data.results.length;i++ ){
+
+        if (!data.results[i].poster_path){
+        continue
+        }
+        if (data.results[i].original_language!=="en"){
+            continue
+            }
 
         var myTitle = document.createElement('h3');
 
@@ -111,14 +121,14 @@ function getMovie() {
 
         var myPosterURL = document.createElement('img');
 
-        myPosterURL.src = `https://image.tmdb.org/t/p/original` + data.results[i].poster_path;
+        myPosterURL.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
 
-        $("#result-display").appendChild(myTitle).append(myPosterURL);
+        $("#result-display").append(myTitle).append(myPosterURL);
 
     }
   })
-  
-  
+}
+  getMovie()
 // Generates random movie.
 
 

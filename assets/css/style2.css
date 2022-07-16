@@ -87,7 +87,7 @@ h1 {
     height: 500px;
     width: 200px;
     text-align: center;
-    float: right;
+    position: relative;
 }
 
 h2 {

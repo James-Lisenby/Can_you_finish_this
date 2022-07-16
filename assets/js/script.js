@@ -87,7 +87,9 @@ checkbox.addEventListener('change', e => {
 
 //Listener for the button
 generate.addEventListener('click', () => {
-    
+
+     getMovie()
+
     console.log("Button clicked");
     
 });
@@ -105,8 +107,8 @@ function getMovie() {
 })
   .then(function(data){
     console.log(data.results)
-    
-    for (var i=0; i<20 && i<data.results.length;i++ ){
+    $("#movieResult").empty()
+    for (var i=0; i<data.results.length;i++ ){
 
         if (!data.results[i].poster_path){
         continue
@@ -121,14 +123,16 @@ function getMovie() {
 
         var myPosterURL = document.createElement('img');
 
+        myPosterURL.setAttribute("id","Trialid");
+
         myPosterURL.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
 
-        $("#result-display").append(myTitle).append(myPosterURL);
+        $("#movieResult").append(myTitle).append(myPosterURL);
 
     }
   })
 }
-  getMovie()
+ 
 // Generates random movie.
 
 

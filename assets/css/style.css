@@ -10,7 +10,9 @@ body {
     padding: 5px;
     border: 5px solid black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+
 }
 
 #watchList {
@@ -58,4 +60,8 @@ body {
 
 #mainContainer {
     display: flex;
+}
+#Trialid{
+    height: auto;
+    width: 100px;
 }

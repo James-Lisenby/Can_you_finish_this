@@ -1,5 +1,5 @@
 
-//Variables for the different inputs
+//Variables for the exclusion checkboxes
 
 const HorrorEl = document.getElementById('Horror');
 const ComedyEL = document.getElementById('Comedy');
@@ -9,64 +9,88 @@ const DramaEL = document.getElementById('Drama');
 const SciFiEl = document.getElementById('Sci-fi');
 
 //User input interaction functions
-ExcludeSciFi = false
+var excludeSciFi = false;
 checkbox = SciFiEl;
 checkbox.addEventListener('change', e => {
-
     if(e.target.checked){
         console.log("checked");
-        ExcludeSciFi = true
+        excludeSciFi = true;
     } else 
         console.log("Unchecked");
+        excludeSciFi = false;
 });
 
+var excludeHorror = false;
 checkbox = HorrorEl;
 checkbox.addEventListener('change', e => {
-
     if(e.target.checked){
         console.log("checked");
-        
+        excludeHorror = true;
     } else 
-    console.log("Unchecked");
+        console.log("Unchecked");
+        excludeHorror = false;
 });
+
+var excludeComedy = false;
 checkbox = ComedyEL;
 checkbox.addEventListener('change', e => {
-
     if(e.target.checked){
         console.log("checked");
+        excludeComedy = true;
     } else 
-    console.log("Unchecked");
+        console.log("Unchecked");
+        excludeComedy = false;
 });
+
+var excludeAction = false;
 checkbox = ActionEL;
 checkbox.addEventListener('change', e => {
-
     if(e.target.checked){
         console.log("checked");
+        excludeAction = true;
     } else 
-    console.log("Unchecked");
+        console.log("Unchecked");
+        excludeAction = false;
 });
+
+var excludeRomance = false;
 checkbox = RomanceEL;
 checkbox.addEventListener('change', e => {
-
     if(e.target.checked){
         console.log("checked");
+        excludeRomance = true;
     } else 
-    console.log("Unchecked");
+        console.log("Unchecked");
+        excludeRomance = false;
 });
+
+var excludeDrama = false;
 checkbox = DramaEL;
 checkbox.addEventListener('change', e => {
-
     if(e.target.checked){
         console.log("checked");
+        excludeDrama = true;
     } else 
-    console.log("Unchecked");
+        console.log("Unchecked");
+        excludeDrama = false;
 });
 
 withoutGenre = "";
 
-// checkGenres(){
-//     if 
-// }
+checkGenres(){
+    if (excludeSciFi){
+        withoutGenre = withoutGenre.concat("without_genre=Science%20fiction") 
+    } if (excludeHorror){
+        withoutGenre = withoutGenre.concat("without_genre=Horror") 
+    } if (excludeComedy){
+        withoutGenre = withoutGenre.concat("without_genre=Comedy")
+    } if (excludeAction){
+        withoutGenre = withoutGenre.concat("without_genre=Action")
+    } if (excludeRomance){
+        withoutGenre = withoutGenre.concat("without_genre=Romance")
+    } if (excludeDrama){}
+        withoutGenre = withoutGenre.concat("without_genre=Drama")
+}
 
 generateBtnEl = document.getElementById("generateBtn");
 
@@ -93,30 +117,31 @@ function getMovie() {
   .then(function(data){
     console.log(data.results)
     $("#movieResult").empty()
-    for (var i=0; i<data.results.length;i++ ){
+    for (var i=0; i<1;i++ ){
 
         if (!data.results[i].poster_path){
-        continue
+            continue
         }
         if (data.results[i].original_language!=="en"){
             continue
-            }
-
+        }
+        else{
         var myTitle = document.createElement('h3');
 
         myTitle.textContent = data.results[i].title;
 
-        var myPosterURL = document.createElement('img');
+        var myPoster = document.createElement('img');
 
-        myPosterURL.setAttribute("id","poster-URL");
+        myPoster.setAttribute("id","poster-URL");
 
-        myPosterURL.setAttribute("alt", "Movie Poster");
+        myPoster.setAttribute("alt", "Movie Poster");
 
-        myPosterURL.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
+        myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
+        
 
         $("#movieResult").append(myTitle)
-        $("#posterDisplay").append(myPosterURL);
-
+        $("#posterDisplay").append(myPoster);
+        }
     }
   })
 }
@@ -133,7 +158,7 @@ function addToList() {
   var returnValue = document.getElementById(displayRandom).value,
     // displayRandom will be the value of the displaying container.
     listNode = document.getElementById("list ID"),
-    liNode = document.createElement("LI"),
+    liNode = document.createElement("li"),
     txtNode = document.createTextNode(returnValue);
   liNode.appendChild(txtNode);
   listNode.appendChild(liNode);

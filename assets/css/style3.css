@@ -38,7 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    left: 200px;
+    left: 150px;
     top: 42px;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 #quoteBox {
-    height: 200px;
+    height: 125px;
     width: 350px;
     border: 2px dashed black;
     display: flex;

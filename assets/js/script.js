@@ -135,6 +135,7 @@ function getMovie() {
  
 // Generates random movie.
 
+// Generate review
 
 function storeRandomMovie() {
   // var randomMovie = results of randomley generated movie,

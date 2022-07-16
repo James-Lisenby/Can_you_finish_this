@@ -1,4 +1,3 @@
-
 //Variables for the exclusion checkboxes
 
 const HorrorEl = document.getElementById('Horror');
@@ -10,8 +9,7 @@ const SciFiEl = document.getElementById('Sci-fi');
 
 //User input interaction functions
 var excludeSciFi = false;
-checkbox = SciFiEl;
-checkbox.addEventListener('change', e => {
+SciFiEl.addEventListener('change', e => {
     if(e.target.checked){
         console.log("checked");
         excludeSciFi = true;
@@ -21,8 +19,7 @@ checkbox.addEventListener('change', e => {
 });
 
 var excludeHorror = false;
-checkbox = HorrorEl;
-checkbox.addEventListener('change', e => {
+HorrorEl.addEventListener('change', e => {
     if(e.target.checked){
         console.log("checked");
         excludeHorror = true;
@@ -32,8 +29,7 @@ checkbox.addEventListener('change', e => {
 });
 
 var excludeComedy = false;
-checkbox = ComedyEL;
-checkbox.addEventListener('change', e => {
+ComedyEL.addEventListener('change', e => {
     if(e.target.checked){
         console.log("checked");
         excludeComedy = true;
@@ -43,8 +39,7 @@ checkbox.addEventListener('change', e => {
 });
 
 var excludeAction = false;
-checkbox = ActionEL;
-checkbox.addEventListener('change', e => {
+ActionEL.addEventListener('change', e => {
     if(e.target.checked){
         console.log("checked");
         excludeAction = true;
@@ -54,8 +49,7 @@ checkbox.addEventListener('change', e => {
 });
 
 var excludeRomance = false;
-checkbox = RomanceEL;
-checkbox.addEventListener('change', e => {
+RomanceEL.addEventListener('change', e => {
     if(e.target.checked){
         console.log("checked");
         excludeRomance = true;
@@ -65,8 +59,7 @@ checkbox.addEventListener('change', e => {
 });
 
 var excludeDrama = false;
-checkbox = DramaEL;
-checkbox.addEventListener('change', e => {
+DramaEL.addEventListener('change', e => {
     if(e.target.checked){
         console.log("checked");
         excludeDrama = true;
@@ -75,22 +68,22 @@ checkbox.addEventListener('change', e => {
         excludeDrama = false;
 });
 
-withoutGenre = "";
+withoutGenre = "without_genre=";
 
-checkGenres(){
-    if (excludeSciFi){
-        withoutGenre = withoutGenre.concat("without_genre=Science%20fiction") 
-    } if (excludeHorror){
-        withoutGenre = withoutGenre.concat("without_genre=Horror") 
-    } if (excludeComedy){
-        withoutGenre = withoutGenre.concat("without_genre=Comedy")
-    } if (excludeAction){
-        withoutGenre = withoutGenre.concat("without_genre=Action")
-    } if (excludeRomance){
-        withoutGenre = withoutGenre.concat("without_genre=Romance")
-    } if (excludeDrama){}
-        withoutGenre = withoutGenre.concat("without_genre=Drama")
-}
+// checkGenres(){
+//     if (excludeSciFi){
+//         withoutGenre = withoutGenre.concat("Science%20fiction") 
+//     } if (excludeHorror){
+//         withoutGenre = withoutGenre.concat("Horror") 
+//     } if (excludeComedy){
+//         withoutGenre = withoutGenre.concat("Comedy")
+//     } if (excludeAction){
+//         withoutGenre = withoutGenre.concat("Action")
+//     } if (excludeRomance){
+//         withoutGenre = withoutGenre.concat("Romance")
+//     } if (excludeDrama){
+//         withoutGenre = withoutGenre.concat("Drama")
+//     }}
 
 generateBtnEl = document.getElementById("generateBtn");
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/materialize-v1.0.0/materialize/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/style3.css" />
+
+    <title>Bad Movie Generator</title>
+
+  </head>
+
+    <body>
+        
+        <div id="header">
+            <header>Bad Movie Generator</header>
+        </div>
+
+        <div id="mainHousing">
+
+
+            <div id="savedHousing">
+                <a id="saveBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Save</i></a>
+                <h1>Saved Movies</h1>
+                    <ul class="collection">
+                        <li>Bugs Life</li>
+                        <li>Fargo</li>
+                        <li>PineApple Express</li>
+                        <li>Pulp Fiction</li>
+                    </ul> 
+            </div>        
+
+
+                    <form id="prefrences" action="#">
+                        <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Include Rated R</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Horror</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Action</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Drama</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Romance</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>Comedy</span>
+                        </label>
+                        </p>
+                    </form>    
+
+
+
+               
+                
+                
+            <div class="row">
+       
+                <div class="col s12 m7">
+                    <div id="mainDisplay" class="card">
+                        <a id="generateBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Push</i></a>
+                        <input id="movieResult" placeholder="Results" disabled>
+                        </input>
+                    
+                         <div class="card-image"></div>
+                         <img src="images/sample-1.jpg">
+                    </div>
+                            <input id="quoteBox" type="text" value="" disabled>
+                            
+                       
+                </div>  
+            </div>
+
+
+            
+
+          
+
+
+            <footer>Made With All of the Love Possible-Group 9</footer>
+
+
+
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script src="/assets/js/script.js"></script>
+    </body>

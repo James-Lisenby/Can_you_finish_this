@@ -13,7 +13,6 @@
   </head>
 
 <body>
-
     
     <div id="header" class="hero-body">
         <h2>Can You Finish?</h2>
@@ -33,19 +32,19 @@
     </div>
 
     <div id="prefrences">
-        <label><input type="checkbox" name="checkbox" value="value" class="checkBox">Include Rated R</label>
-        <br>
-          <label><input type="checkbox" name="checkbox" value="value" class="checkBox">Include Action</label>
+        <label><input type="checkbox" value="value" class="checkBox" id="Sci-fi">Exclude Sci-fi</label>
           <br>
-            <label><input type="checkbox" name="checkbox" value="value" class="checkBox">Include Drama</label>
-            <br>
-              <label><input type="checkbox" name="checkbox" value="value" class="checkBox">Include Comedy</label>
-              <br>
-                <label><input type="checkbox" name="checkbox" value="value" class="checkBox">Include Romance</label>
-                <br>
-                  <label><input type="checkbox" name="checkbox" value="value" class="checkBox">Include Horror</label>
-                  <br>
-    </div>
+        <label><input type="checkbox" value="value" class="checkBox" id="Action">Exclude Action</label>
+          <br>
+        <label><input type="checkbox" value="value" class="checkBox" id="Drama">Exclude Drama</label>
+          <br>
+        <label><input type="checkbox" value="value" class="checkBox" id="Comedy">Exclude Comedy</label>
+          <br>
+        <label><input type="checkbox" value="value" class="checkBox" id="Romance">Exclude Romance</label>
+          <br>
+        <label><input type="checkbox" value="value" class="checkBox" id="Horror">Exclude Horror</label>
+          <br>
+      </div>
     <!-- Prefrence selectors for movie genres and rating. -->
 
 
@@ -54,11 +53,10 @@
       <h1>HERE IS YOUR MOVIE</h1>
       <button id="generateBtn" enabled>Generate</button>
       <button id="saveBtn" enabled>Save</button>
-      <input id="movieResult" type="text" disabled>
+      <div id="movieResult"></div>
 
       <div class="card" id="posterDisplay">
-        <img src="" alt="Avatar" style="width:100%">
-        <div class="container">
+        <div class="container"></div>
       </div>
 
     </div>

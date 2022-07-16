@@ -1,34 +1,35 @@
 
 //Variables for the different inputs
-const OratedREL = document.getElementById('OratedR');
-const EratedREL = document.getElementById('EratedR');
-const YearinputEL = document.getElementById('YearInput');
+
 const HorrorEl = document.getElementById('Horror');
 const ComedyEL = document.getElementById('Comedy');
 const ActionEL = document.getElementById('Action');
-const RomComEL = document.getElementById('RomCom');
+const RomanceEL = document.getElementById('Romance');
 const DramaEL = document.getElementById('Drama');
-const SatireEL = document.getElementById('Satire');
+const SciFiEl = document.getElementById('Sci-fi');
 
 //User input interaction functions
-number = document.getElementById('YearInput');
-
-number.addEventListener('change', e =>{
-
-console.log("Change happened");
-
-})
-
-checkbox = document.getElementById('OratedR');
+ExcludeSciFi = false
+checkbox = SciFiEl;
 checkbox.addEventListener('change', e => {
 
     if(e.target.checked){
         console.log("checked");
+        ExcludeSciFi = true
     } else 
         console.log("Unchecked");
 });
 
-checkbox = document.getElementById('EratedR');
+checkbox = HorrorEl;
+checkbox.addEventListener('change', e => {
+
+    if(e.target.checked){
+        console.log("checked");
+        
+    } else 
+    console.log("Unchecked");
+});
+checkbox = ComedyEL;
 checkbox.addEventListener('change', e => {
 
     if(e.target.checked){
@@ -36,7 +37,7 @@ checkbox.addEventListener('change', e => {
     } else 
     console.log("Unchecked");
 });
-checkbox = document.getElementById('Horror');
+checkbox = ActionEL;
 checkbox.addEventListener('change', e => {
 
     if(e.target.checked){
@@ -44,7 +45,7 @@ checkbox.addEventListener('change', e => {
     } else 
     console.log("Unchecked");
 });
-checkbox = document.getElementById('Comedy');
+checkbox = RomanceEL;
 checkbox.addEventListener('change', e => {
 
     if(e.target.checked){
@@ -52,7 +53,7 @@ checkbox.addEventListener('change', e => {
     } else 
     console.log("Unchecked");
 });
-checkbox = document.getElementById('Action');
+checkbox = DramaEL;
 checkbox.addEventListener('change', e => {
 
     if(e.target.checked){
@@ -60,33 +61,17 @@ checkbox.addEventListener('change', e => {
     } else 
     console.log("Unchecked");
 });
-checkbox = document.getElementById('RomCom');
-checkbox.addEventListener('change', e => {
 
-    if(e.target.checked){
-        console.log("checked");
-    } else 
-    console.log("Unchecked");
-});
-checkbox = document.getElementById('Drama');
-checkbox.addEventListener('change', e => {
+withoutGenre = "";
 
-    if(e.target.checked){
-        console.log("checked");
-    } else 
-    console.log("Unchecked");
-});
-checkbox = document.getElementById('Satire');
-checkbox.addEventListener('change', e => {
+// checkGenres(){
+//     if 
+// }
 
-    if(e.target.checked){
-        console.log("checked");
-    } else 
-    console.log("Unchecked");
-});
+generateBtnEl = document.getElementById("generateBtn");
 
 //Listener for the button
-generate.addEventListener('click', () => {
+generateBtnEl.addEventListener('click', () => {
 
      getMovie()
 
@@ -101,7 +86,7 @@ var searchResults = []
 
 // retrieves list of movies from worst to best.
 function getMovie() {
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true`)
+  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true` + withoutGenre)
   .then(function(response) {
     return response.json()
 })
@@ -123,11 +108,14 @@ function getMovie() {
 
         var myPosterURL = document.createElement('img');
 
-        myPosterURL.setAttribute("id","Trialid");
+        myPosterURL.setAttribute("id","poster-URL");
+
+        myPosterURL.setAttribute("alt", "Movie Poster");
 
         myPosterURL.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
 
-        $("#movieResult").append(myTitle).append(myPosterURL);
+        $("#movieResult").append(myTitle)
+        $("#posterDisplay").append(myPosterURL);
 
     }
   })

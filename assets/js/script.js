@@ -86,6 +86,7 @@ checkGenres(){
     } else {
         withoutGenre.empty()
     }
+    console.log()
 }
 
 generateBtnEl = document.getElementById("generateBtn");
@@ -99,10 +100,22 @@ generateBtnEl.addEventListener('click', () => {
     
 });
 
-var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
-// var movie = will be the result of the randomly generated movie
+// var nytAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP"
 
-var searchResults = []
+// function getReview(){
+//     fetch("https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api_key=" + nytAPIKey)
+//     .then(function(response){
+//         return response.json()
+//     })
+//     .then(function(data){
+//         console.log(data.results)
+
+//     })
+// }
+
+// getReview()
+
+var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
 
 // retrieves list of movies from worst to best.
 function getMovie() {

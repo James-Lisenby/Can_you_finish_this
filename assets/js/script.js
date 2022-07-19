@@ -89,6 +89,28 @@ function checkGenres(){
 }
 
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
+
+// var movie = will be the result of the randomly generated movie
+
+// Movie Review Key
+var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP"
+
+// retrievees movie review WORKING PROGRESS
+function getReview(){
+    fetch('https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api_key=' + nyTimesAPIKey)
+    .then(function(response) {
+        return response.json()
+    })
+}
+// Generate Review
+generateBtnEl.addEventListener('click', () => {
+
+    getReview()
+
+   console.log("Button clicked");
+   
+});
+
 // retrieves list of movies from worst to best.
 function getMovie() {
   fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)

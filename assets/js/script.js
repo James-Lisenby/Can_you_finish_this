@@ -96,20 +96,20 @@ var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
 var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP"
 
 // retrievees movie review WORKING PROGRESS
-function getReview(){
-    fetch('https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api_key=' + nyTimesAPIKey)
-    .then(function(response) {
-        return response.json()
-    })
-}
+// function getReview(){
+//     fetch('https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api_key=' + nyTimesAPIKey)
+//     .then(function(response) {
+//         return response.json()
+//     })
+// }
+
 // Generate Review
-generateBtnEl.addEventListener('click', () => {
+// generateBtn.addEventListener('click', () => {
+//     //getReview()
 
-    getReview()
-
-   console.log("Button clicked");
+//    console.log("Button clicked");
    
-});
+// });
 
 // retrieves list of movies from worst to best.
 function getMovie() {
@@ -121,8 +121,9 @@ function getMovie() {
         console.log(data.results)
         $("#movieResult").empty()
 
-    for (var i=0; i<1;i++ ){
-
+    for (var i = 0; i < data.results.length; i++){
+    (data.results[Math.floor(Math.random() * data.results.length)]);
+    
         var myTitle = document.createElement('h3');
 
         myTitle.textContent = data.results[i].title;
@@ -140,8 +141,8 @@ function getMovie() {
         
         $("#movieResult").append(myTitle)
         $("#posterDisplay").append(myPoster);
-        
     }
+    
   })
 }
 

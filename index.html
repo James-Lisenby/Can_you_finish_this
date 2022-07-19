@@ -4,93 +4,107 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/style.css" />
-    <title>Document</title>
+
+    <title>Bad Movie Generator</title>
+
   </head>
-  <body>
-    <section class="hero">
-      <div class="hero-body">
-        <p class="title">
-          Can you finish it??
-        </p>
-      </div>
-    </section>
-  <div id="mainContainer">
-      <div id="resultDisplay">
-        <div id="movieResult"></div>
-        <button class="button is-rounded" id="generate">Feeling lucky?</button>
-      </div>
-      <div id="watchList">
-        <p>Saved Movies</p>
-        <ul id="saveMovie"></ul>
-      </div>
 
-    <div id="prefrenceBox">
+    <body>
+        
+        <div id="header">
+            <header>Bad Movie Generator</header>
+        </div>
 
-      <label id="YearInput">
-        <input type="number">
-        Year
-      </label>
+        <div id="mainHousing">
 
-      <label id="OratedR" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Only rated R
-      </label>
 
-      <label id="EratedR" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        No rated R
-      </label>
+            <div id="savedHousing">
+                <a id="saveBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Save</i></a>
+                <h1>Saved Movies</h1>
+                    <ul class="collection">
+                        <li>Bugs Life</li>
+                        <li>Fargo</li>
+                        <li>PineApple Express</li>
+                        <li>Pulp Fiction</li>
+                    </ul> 
+            </div>        
 
-      <label id="Horror" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Horror
-      </label>
 
-      <label id="Comedy" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Comedy
-      </label>
+                    <form id="prefrences" action="#">
+                        <p>
+                        <label>
+                            <input type="checkbox" id="Sci-fi"/>
+                            <span>SciFi</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" id="Horror" />
+                            <span>Horror</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" id="Action"/>
+                            <span>Action</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" id="Drama"/>
+                            <span>Drama</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" id="Romance"/>
+                            <span>Romance</span>
+                        </label>
+                        </p>
+                        <p>
+                        <label>
+                            <input type="checkbox" id="Comedy"/>
+                            <span>Comedy</span>
+                        </label>
+                        </p>
+                    </form>    
 
-      <label id="Action" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Action
-      </label>
 
-      <label id="RomCom" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Rom-Com
-      </label>
 
-      <label id="Drama" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Drama
-      </label>
+               
+                
+                
+            <div class="row">
+       
+                <div class="col s12 m7">
+                    <div id="mainDisplay" class="card">
+                        <a id="generateBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Push</i></a>
+                        <input id="movieResult" placeholder="Results" disabled>
+                        </input>
+                    
+                         <div class="card-image"></div>
+                         <img src="">
+                    </div>
+                        <input id="quoteBox" type="text" value="" disabled>
+                            
+                       
+                </div>  
+            </div>
 
-      <label id="Satire" class="checkbox" enabled>
-        <input type="checkbox" enabled>
-        Satire
-      </label>
 
-      <div id="quoteBox">
-      Random Quote That Means Nothing
-      
-    </div>
+            
 
-    <footer class="footer">
-       <div class="content has-text-centered">
-          <p>
-         <strong>Terrible Movie Finder</strong>
-         </p>
-      </div>
+          
 
-  </footer>
-   <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-  <script src="assets/js/script.js"></script>
-</body>
 
-</html>
+            <footer>Made With All of the Love Possible-Group 9</footer>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+    </body>

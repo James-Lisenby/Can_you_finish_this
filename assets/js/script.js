@@ -70,20 +70,23 @@ DramaEL.addEventListener('change', e => {
 
 withoutGenre = "without_genre=";
 
-// checkGenres(){
-//     if (excludeSciFi){
-//         withoutGenre = withoutGenre.concat("Science%20fiction") 
-//     } if (excludeHorror){
-//         withoutGenre = withoutGenre.concat("Horror") 
-//     } if (excludeComedy){
-//         withoutGenre = withoutGenre.concat("Comedy")
-//     } if (excludeAction){
-//         withoutGenre = withoutGenre.concat("Action")
-//     } if (excludeRomance){
-//         withoutGenre = withoutGenre.concat("Romance")
-//     } if (excludeDrama){
-//         withoutGenre = withoutGenre.concat("Drama")
-//     }}
+checkGenres(){
+    if (excludeSciFi){
+        withoutGenre = withoutGenre.concat("Science%20fiction") 
+    } if (excludeHorror){
+        withoutGenre = withoutGenre.concat("Horror") 
+    } if (excludeComedy){
+        withoutGenre = withoutGenre.concat("Comedy")
+    } if (excludeAction){
+        withoutGenre = withoutGenre.concat("Action")
+    } if (excludeRomance){
+        withoutGenre = withoutGenre.concat("Romance")
+    } if (excludeDrama){
+        withoutGenre = withoutGenre.concat("Drama")
+    } else {
+        withoutGenre.empty()
+    }
+}
 
 generateBtnEl = document.getElementById("generateBtn");
 

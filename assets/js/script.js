@@ -10,74 +10,83 @@ const SciFiEl = document.getElementById('Sci-fi');
 //User input interaction functions
 var excludeSciFi = false;
 SciFiEl.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeSciFi = true;
+
     } else { 
         console.log("Unchecked");
         excludeSciFi = false;
     }
        
+
 });
 
 var excludeHorror = false;
 HorrorEl.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeHorror = true;
+
     } else {
         console.log("Unchecked");
         excludeHorror = false;
     }
+
 });
 
 var excludeComedy = false;
 ComedyEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeComedy = true;
+
     } else {
         console.log("Unchecked");
         excludeComedy = false;
     }
+
 });
 
 var excludeAction = false;
 ActionEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeAction = true;
+
 } else {
         console.log("Unchecked");
         excludeAction = false;
     }
+
 });
 
 var excludeRomance = false;
 RomanceEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeRomance = true;
+
     } else {
         console.log("Unchecked");
         excludeRomance = false;
         
     }
+
 });
 
 var excludeDrama = false;
 DramaEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeDrama = true;
+
     } else { 
         console.log("Unchecked");
         excludeDrama = false;
     }
+
 });
-
-
-
 
 function checkGenres() {
 
@@ -127,6 +136,7 @@ function checkGenres() {
 
 //Listener for the button
 generateBtnEl.addEventListener('click', () => {
+
 checkGenres()
      getMovie()
 
@@ -171,6 +181,7 @@ generateBtnEl.addEventListener('click', () => {
 
 // retrieves list of movies from worst to best.
 function getMovie() {
+
   fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
     .then(function(response) {
         return response.json()
@@ -218,25 +229,23 @@ generateBtnEl.addEventListener('click', () => {
 
 // var movie = will be the result of the randomly generated movie
 
-var searchResults = []
-
 
 // Generates random movie.
 
 
 function storeRandomMovie() {
-  // var randomMovie = results of randomley generated movie,
-  localStorage.setItem('randomMovie', JSON.stringify(randomMovie));
+    // var randomMovie = results of randomley generated movie,
+    localStorage.setItem('randomMovie', JSON.stringify(randomMovie));
 }
 
 function addToList() {
-  var returnValue = document.getElementById(displayRandom).value,
-    // displayRandom will be the value of the displaying container.
-    listNode = document.getElementById("list ID"),
-    liNode = document.createElement("li"),
-    txtNode = document.createTextNode(returnValue);
-  liNode.appendChild(txtNode);
-  listNode.appendChild(liNode);
+    var returnValue = document.getElementById(displayRandom).value,
+        // displayRandom will be the value of the displaying container.
+        listNode = document.getElementById("list ID"),
+        liNode = document.createElement("li"),
+        txtNode = document.createTextNode(returnValue);
+    liNode.appendChild(txtNode);
+    listNode.appendChild(liNode);
 }
 // Adds result to "results" list.
 

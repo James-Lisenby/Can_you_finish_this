@@ -110,7 +110,7 @@ var searchResults = []
 // Movie Review Key
 var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP"
 
-// retrievees movie review 
+// retrievees movie review WORKING PROGRESS
 function getReview(){
     fetch('https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api_key=' + nyTimesAPIKey)
     .then(function(response) {

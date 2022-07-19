@@ -121,7 +121,7 @@ function getMovie() {
         console.log(data.results)
         $("#movieResult").empty()
 
-    for (var i = 0; i < data.results.length; i++){
+    for (var i = 0; i < 1; i++){
     (data.results[Math.floor(Math.random() * data.results.length)]);
     
         var myTitle = document.createElement('h3');

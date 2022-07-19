@@ -70,7 +70,7 @@ DramaEL.addEventListener('change', e => {
 
 withoutGenre = "without_genre=";
 
-checkGenres(){
+function checkGenres(){
     if (excludeSciFi){
         withoutGenre = withoutGenre.concat("Science%20fiction") 
     } if (excludeHorror){
@@ -78,28 +78,18 @@ checkGenres(){
     } if (excludeComedy){
         withoutGenre = withoutGenre.concat("Comedy")
     } if (excludeAction){
-        withoutGenre = withoutGenre.concat("Action")
+        withoutGenre = withoutGenre.concat("28")
     } if (excludeRomance){
         withoutGenre = withoutGenre.concat("Romance")
     } if (excludeDrama){
         withoutGenre = withoutGenre.concat("Drama")
     } else {
-        withoutGenre.empty()
+        withoutGenre = ""
     }
 }
 
-generateBtnEl = document.getElementById("generateBtn");
-
-//Listener for the button
-generateBtnEl.addEventListener('click', () => {
-
-     getMovie()
-
-    console.log("Button clicked");
-    
-});
-
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
+
 // var movie = will be the result of the randomly generated movie
 
 // Movie Review Key
@@ -121,26 +111,18 @@ generateBtnEl.addEventListener('click', () => {
    
 });
 
-var searchResults = []
-
 // retrieves list of movies from worst to best.
 function getMovie() {
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true` + withoutGenre)
-  .then(function(response) {
-    return response.json()
-})
-  .then(function(data){
-    console.log(data.results)
-    $("#movieResult").empty()
+  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(data){
+        console.log(data.results)
+        $("#movieResult").empty()
+
     for (var i=0; i<1;i++ ){
 
-        if (!data.results[i].poster_path){
-            continue
-        }
-        if (data.results[i].original_language!=="en"){
-            continue
-        }
-        else{
         var myTitle = document.createElement('h3');
 
         myTitle.textContent = data.results[i].title;
@@ -151,16 +133,35 @@ function getMovie() {
 
         myPoster.setAttribute("alt", "Movie Poster");
 
-        myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
+        if (!data.results[i].poster_path){
+            myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
+        } else {myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;}
         
-
+        
         $("#movieResult").append(myTitle)
         $("#posterDisplay").append(myPoster);
-        }
+        
     }
   })
 }
- 
+
+generateBtnEl = document.getElementById("generateBtn");
+
+//Listener for the button
+generateBtnEl.addEventListener('click', () => {
+    checkGenres()
+    getMovie()
+
+    console.log("Button clicked");
+    
+});
+
+
+// var movie = will be the result of the randomly generated movie
+
+var searchResults = []
+
+
 // Generates random movie.
 
 

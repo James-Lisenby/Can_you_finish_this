@@ -2,7 +2,7 @@
 
 // Two stored methods to store saved movies from the list to the local storage.
 
-// storeSaved()
+// storeSaved();
 
 // function storeSaved() {
 //     savedMovies = document.getElementById('savedList').textContent;
@@ -10,17 +10,28 @@
 //     console.log(savedMovies);
 // }
 
-// storeSaved2()
+storeSaved2()
 
-// function storeSaved2() {
-//     savedMovies = document.getElementById('savedList').getElementsByTagName('li'),
-//         localStorage.setItem('savedList', JSON.stringify());
-//     console.log(savedMovies);
+function storeSaved2() {
+    savedMovies = document.getElementById('savedList').getElementsByTagName('li'),
+        localStorage.setItem('savedList', JSON.stringify());
+    console.log(savedMovies);
 
-// };
+};
 
 
 // Render the saved movies in local storage back onto the html list when page loads....
 
+// renderList();
 
+// function renderList() {
+//     var localMovie = JSON.parse(localStorage.getItem('savedMovies'));
+//     var movieListItem = document.createElement("li");
+//     movieListItem.appendChild(("savedMovies").textContent);
+// }
 
+// renderList();
+
+// function renderList() {
+
+// }

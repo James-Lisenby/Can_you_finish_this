@@ -10,78 +10,78 @@ const SciFiEl = document.getElementById('Sci-fi');
 //User input interaction functions
 var excludeSciFi = false;
 SciFiEl.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeSciFi = true;
-    } else 
+    } else
         console.log("Unchecked");
-        excludeSciFi = false;
+    excludeSciFi = false;
 });
 
 var excludeHorror = false;
 HorrorEl.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeHorror = true;
-    } else 
+    } else
         console.log("Unchecked");
-        excludeHorror = false;
+    excludeHorror = false;
 });
 
 var excludeComedy = false;
 ComedyEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeComedy = true;
-    } else 
+    } else
         console.log("Unchecked");
-        excludeComedy = false;
+    excludeComedy = false;
 });
 
 var excludeAction = false;
 ActionEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeAction = true;
-    } else 
+    } else
         console.log("Unchecked");
-        excludeAction = false;
+    excludeAction = false;
 });
 
 var excludeRomance = false;
 RomanceEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeRomance = true;
-    } else 
+    } else
         console.log("Unchecked");
-        excludeRomance = false;
+    excludeRomance = false;
 });
 
 var excludeDrama = false;
 DramaEL.addEventListener('change', e => {
-    if(e.target.checked){
+    if (e.target.checked) {
         console.log("checked");
         excludeDrama = true;
-    } else 
+    } else
         console.log("Unchecked");
-        excludeDrama = false;
+    excludeDrama = false;
 });
 
 withoutGenre = "without_genre=";
 
-checkGenres(){
-    if (excludeSciFi){
-        withoutGenre = withoutGenre.concat("Science%20fiction") 
-    } if (excludeHorror){
-        withoutGenre = withoutGenre.concat("Horror") 
-    } if (excludeComedy){
+function checkGenres() {
+    if (excludeSciFi) {
+        withoutGenre = withoutGenre.concat("Science%20fiction")
+    } if (excludeHorror) {
+        withoutGenre = withoutGenre.concat("Horror")
+    } if (excludeComedy) {
         withoutGenre = withoutGenre.concat("Comedy")
-    } if (excludeAction){
+    } if (excludeAction) {
         withoutGenre = withoutGenre.concat("Action")
-    } if (excludeRomance){
+    } if (excludeRomance) {
         withoutGenre = withoutGenre.concat("Romance")
-    } if (excludeDrama){
+    } if (excludeDrama) {
         withoutGenre = withoutGenre.concat("Drama")
     } else {
         withoutGenre.empty()
@@ -93,10 +93,10 @@ generateBtnEl = document.getElementById("generateBtn");
 //Listener for the button
 generateBtnEl.addEventListener('click', () => {
 
-     getMovie()
+    getMovie()
 
     console.log("Button clicked");
-    
+
 });
 
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
@@ -106,58 +106,58 @@ var searchResults = []
 
 // retrieves list of movies from worst to best.
 function getMovie() {
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true` + withoutGenre)
-  .then(function(response) {
-    return response.json()
-})
-  .then(function(data){
-    console.log(data.results)
-    $("#movieResult").empty()
-    for (var i=0; i<1;i++ ){
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en-US&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=500&with_watch_monetization_types=flatrate&poster_path=true` + withoutGenre)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            console.log(data.results)
+            $("#movieResult").empty()
+            for (var i = 0; i < 1; i++) {
 
-        if (!data.results[i].poster_path){
-            continue
-        }
-        if (data.results[i].original_language!=="en"){
-            continue
-        }
-        else{
-        var myTitle = document.createElement('h3');
+                if (!data.results[i].poster_path) {
+                    continue
+                }
+                if (data.results[i].original_language !== "en") {
+                    continue
+                }
+                else {
+                    var myTitle = document.createElement('h3');
 
-        myTitle.textContent = data.results[i].title;
+                    myTitle.textContent = data.results[i].title;
 
-        var myPoster = document.createElement('img');
+                    var myPoster = document.createElement('img');
 
-        myPoster.setAttribute("id","poster-URL");
+                    myPoster.setAttribute("id", "poster-URL");
 
-        myPoster.setAttribute("alt", "Movie Poster");
+                    myPoster.setAttribute("alt", "Movie Poster");
 
-        myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
-        
+                    myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;
 
-        $("#movieResult").append(myTitle)
-        $("#posterDisplay").append(myPoster);
-        }
-    }
-  })
+
+                    $("#movieResult").append(myTitle)
+                    $("#posterDisplay").append(myPoster);
+                }
+            }
+        })
 }
- 
+
 // Generates random movie.
 
 
 function storeRandomMovie() {
-  // var randomMovie = results of randomley generated movie,
-  localStorage.setItem('randomMovie', JSON.stringify(randomMovie));
+    // var randomMovie = results of randomley generated movie,
+    localStorage.setItem('randomMovie', JSON.stringify(randomMovie));
 }
 
 function addToList() {
-  var returnValue = document.getElementById(displayRandom).value,
-    // displayRandom will be the value of the displaying container.
-    listNode = document.getElementById("list ID"),
-    liNode = document.createElement("li"),
-    txtNode = document.createTextNode(returnValue);
-  liNode.appendChild(txtNode);
-  listNode.appendChild(liNode);
+    var returnValue = document.getElementById(displayRandom).value,
+        // displayRandom will be the value of the displaying container.
+        listNode = document.getElementById("list ID"),
+        liNode = document.createElement("li"),
+        txtNode = document.createTextNode(returnValue);
+    liNode.appendChild(txtNode);
+    listNode.appendChild(liNode);
 }
 // Adds result to "results" list.
 

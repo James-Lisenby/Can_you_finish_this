@@ -70,23 +70,23 @@ DramaEL.addEventListener('change', e => {
 
 withoutGenre = "without_genre=";
 
-checkGenres(){
-    if (excludeSciFi){
-        withoutGenre = withoutGenre.concat("Science%20fiction") 
-    } if (excludeHorror){
-        withoutGenre = withoutGenre.concat("Horror") 
-    } if (excludeComedy){
-        withoutGenre = withoutGenre.concat("Comedy")
-    } if (excludeAction){
-        withoutGenre = withoutGenre.concat("Action")
-    } if (excludeRomance){
-        withoutGenre = withoutGenre.concat("Romance")
-    } if (excludeDrama){
-        withoutGenre = withoutGenre.concat("Drama")
-    } else {
-        withoutGenre.empty()
-    }
-}
+// checkGenres(){
+//     if (excludeSciFi){
+//         withoutGenre = withoutGenre.concat("Science%20fiction") 
+//     } if (excludeHorror){
+//         withoutGenre = withoutGenre.concat("Horror") 
+//     } if (excludeComedy){
+//         withoutGenre = withoutGenre.concat("Comedy")
+//     } if (excludeAction){
+//         withoutGenre = withoutGenre.concat("Action")
+//     } if (excludeRomance){
+//         withoutGenre = withoutGenre.concat("Romance")
+//     } if (excludeDrama){
+//         withoutGenre = withoutGenre.concat("Drama")
+//     } else {
+//         withoutGenre.empty()
+//     }
+// }
 
 generateBtnEl = document.getElementById("generateBtn");
 
@@ -107,10 +107,22 @@ var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP"
 
 // retrievees movie review WORKING PROGRESS
 function getReview(){
-    fetch('https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api_key=' + nyTimesAPIKey)
-    .then(function(response) {
-        return response.json()
-    })
+    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=' 
+
+    fetch(requestUrl + nyTimesAPIKey)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function (data) {
+            console.log(data)
+            var review = data.results[0].summary_short
+            console.log(review)
+            var reviewData = document.createElement('div')
+            review.append()
+        })
+        .catch(function() {
+            console.log('Error')
+        })
 }
 // Generate Review
 generateBtnEl.addEventListener('click', () => {

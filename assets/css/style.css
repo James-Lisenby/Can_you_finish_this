@@ -5,27 +5,13 @@ body {
 #header {
     text-align: center;
     width: 100%;
-    height: 100px;
+    top: 0;
     font-size: 50px;
-    display: block;
 }
 
-#savedHousing {
+#saved-container {
     display: flex;
-}
-
-
-
-#mainDisplay {
-
-}
-
-#mainHousing {
-    display: flex;
-}
-
-#preferences {
-
+    flex-direction: column;
 }
 
 .btn {
@@ -39,8 +25,7 @@ body {
 }
 
 #poster-URL {
-    height:70%;
-
+    width: 90%;
 }
 
 #quoteBox {
@@ -55,9 +40,14 @@ li {
 }
 
 footer {
-    position: absolute;
     width: 100%;
-    height: 10%;
+    height: 30%;
+    position: sticky;
+    bottom: 0;
     text-align: center;
-    font-size: 50px;
+}
+
+#tmdb-logo {
+    height: 20px;
+
 }

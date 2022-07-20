@@ -133,7 +133,9 @@ function checkGenres() {
       
 } 
 
+
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
+
 
 // var movie = will be the result of the randomly generated movie
 
@@ -161,7 +163,9 @@ function getReview(){
         })
 }
 // Generate Review
+
 // generateBtnEl.addEventListener('click', () => {
+
 
 
 // Generate Review
@@ -214,6 +218,7 @@ generateBtnEl = document.getElementById("generateBtn");
 
 //Listener for the button
 generateBtnEl.addEventListener('click', () => {
+    getReview()
     checkGenres()
     getMovie()
 

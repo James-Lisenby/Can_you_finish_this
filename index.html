@@ -13,98 +13,82 @@
 
     <body>
         
-        <div id="header">
+        <div id="header" class="">
             <header>Bad Movie Generator</header>
         </div>
 
         <div id="mainHousing">
-
-
-            <div id="savedHousing">
+            <div id="savedHousing" class="purple lighten-3">
                 <a id="saveBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Save</i></a>
                 <h1>Saved Movies</h1>
-                    <ul id="savedList" class="collection">
-                        <li>Bugs Life</li>
-                        <li>Fargo</li>
-                        <li>PineApple Express</li>
-                        <li>Pulp Fiction</li>
-                    </ul> 
-            </div>        
+                <ul id="savedList" class="collection"></ul> 
+            </div>
 
 
-                    <form id="prefrences" action="#">
-                        <p>
-                        <label>
-                            <input type="checkbox" id="Sci-fi"/>
-                            <span>SciFi</span>
-                        </label>
-                        </p>
-                        <p>
-                        <label>
-                            <input type="checkbox" id="Horror" />
-                            <span>Horror</span>
-                        </label>
-                        </p>
-                        <p>
-                        <label>
-                            <input type="checkbox" id="Action"/>
-                            <span>Action</span>
-                        </label>
-                        </p>
-                        <p>
-                        <label>
-                            <input type="checkbox" id="Drama"/>
-                            <span>Drama</span>
-                        </label>
-                        </p>
-                        <p>
-                        <label>
-                            <input type="checkbox" id="Romance"/>
-                            <span>Romance</span>
-                        </label>
-                        </p>
-                        <p>
-                        <label>
-                            <input type="checkbox" id="Comedy"/>
-                            <span>Comedy</span>
-                        </label>
-                        </p>
-                    </form>    
+            <form id="preferences" action="#">
+                <p>
+                    <label>
+                        <input type="checkbox" id="Sci-fi"/>
+                        <span>Exclude SciFi</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="Horror" />
+                        <span>Exclude Horror</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="Action"/>
+                        <span>Exclude Action</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="Drama"/>
+                        <span>Exclude Drama</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="Romance"/>
+                        <span>Exclude Romance</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="Comedy"/>
+                        <span>Exclude Comedy</span>
+                    </label>
+                </p>
+            </form>    
 
 
-
-               
-                
-                
-            <div class="row">
-       
-                <div class="col s12 m7">
+                <div class="row">
+                    <input class="col s12 m7">
                     <div id="mainDisplay" class="card">
                         <a id="generateBtn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">Push</i></a>
                         <div id="movieResult" placeholder="Results" disabled>
                         </div>
-                    
-                         <div class="card-image"></div>
-                         <div id="posterDisplay"></div>
-                    </div>
-                        <input id="reviewBox" type="text" value="" disabled>
-                            
-                       
-                </div>  
-            </div>
+                        
+                        <div class="card-image"></div>
+                        <div id="posterDisplay"></div>
+                        
+                        <input id="reviewBox" type="text" value="" disabled></input>
+                    </div>  
+                </div>
 
 
-            
+                
 
-          
-
-
-            <footer>Made With All of the Love Possible-Group 9</footer>
+        </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
+        <footer>Made With All of the Love Possible-Group 9</footer>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="./assets/js/script.js"></script>
         <script src="./assets/js/localstorage.js"></script>

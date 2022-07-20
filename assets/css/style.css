@@ -14,7 +14,7 @@ body {
 }
 
 #savedHousing {
-    display: block;
+    display: flex;
 }
 
 
@@ -34,7 +34,7 @@ body {
     background-color: bisque;
 }
 
-#prefrences {
+#preferences {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -53,6 +53,11 @@ body {
     position: relative;
     left: 40%;
     display: flex;
+}
+
+#poster-URL {
+    height:70%;
+
 }
 
 #quoteBox {

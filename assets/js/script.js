@@ -135,10 +135,12 @@ function checkGenres() {
 
 
 //Listener for the button
-generateBtnEl.addEventListener('click', () => {
+// generateBtn.addEventListener('click', () => {
 
-checkGenres()
-     getMovie()
+// checkGenres()
+//      getMovie()
+
+// )};
 
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
 
@@ -168,7 +170,7 @@ function getReview(){
         })
 }
 // Generate Review
-generateBtnEl.addEventListener('click', () => {
+//generateBtnEl.addEventListener('click', () => {
 
 
 // Generate Review
@@ -219,6 +221,7 @@ generateBtnEl = document.getElementById("generateBtn");
 
 //Listener for the button
 generateBtnEl.addEventListener('click', () => {
+    getReview()
     checkGenres()
     getMovie()
 

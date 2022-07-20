@@ -140,7 +140,7 @@ var reviewBox = document.getElementById("#review-box")
 // retrieves NYT movie review WORK IN PROGRESS
 
 function getReview() {
-    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key='
+    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=' + tmdbAPIKey
 
     fetch(requestUrl + nyTimesAPIKey)
         .then(function (response) {
@@ -165,24 +165,13 @@ function getMovie() {
     .then(function(response) {
         return response.json()
     })
-    .then(function(data){
-        console.log(data.results)
-        $("#title-display").empty()
-        $("#poster-display").empty()
-
-    for (var i = 0; i < 1; i++){
-    (data.results[Math.floor(Math.random() * data.results.length)]);
-    
-        var myTitle = document.createElement('p');
-
-
-function randomrender(moviearrey) {
-    $("#movieResult").empty()
-    $("#posterDisplay").empty()
-    let index = Math.floor(Math.random() * moviearrey.length)
-    let movie = moviearrey[index]
-    console.log("movie thing",movie);
-    var myTitle = document.createElement('h3');
+    .then(function randomrender(response) {
+    $("#title-display").empty()
+    $("#poster-display").empty()
+    let index = Math.floor(Math.random() * response.length)
+    let movie = response[index]
+    console.log("movie thing", movie);
+    var myTitle = document.createElement('p');
 
     myTitle.textContent = movie.original_title;
 
@@ -190,10 +179,7 @@ function randomrender(moviearrey) {
 
     myPoster.setAttribute("id","poster-URL");
 
-
         // myPoster.setAttribute("href", ""data.results[i].)
-
-        
 
         if (!data.results[i].poster_path){
             myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
@@ -202,9 +188,18 @@ function randomrender(moviearrey) {
         
         $("#title-display").append(myTitle)
         $("#poster-display").append(myPoster);
-    }
+    })
+        
+    //     function(data) {
+    //     console.log(data.results)
+    //     $("#title-display").empty()
+    //     $("#poster-display").empty()
+
+    // for (var i = 0; i < 1; i++){
+    // (data.results[Math.floor(Math.random() * data.results.length)]);
     
-  })
+    //     var myTitle = document.createElement('p');
+
 }
 
 

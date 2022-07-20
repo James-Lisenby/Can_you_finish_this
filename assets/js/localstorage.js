@@ -31,7 +31,6 @@ function storeSaved2() {
 // }
 
 // renderList();
-
 // function renderList() {
 
 // }

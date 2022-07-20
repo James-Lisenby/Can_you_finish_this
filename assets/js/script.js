@@ -221,6 +221,7 @@ generateBtnEl = document.getElementById("generateBtn");
 
 //Listener for the button
 generateBtnEl.addEventListener('click', () => {
+    getReview()
     checkGenres()
     getMovie()
 

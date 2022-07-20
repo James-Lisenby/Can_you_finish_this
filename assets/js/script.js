@@ -147,8 +147,10 @@ function getReview() {
             return response.json()
         })
         .then(function (data) {
+            $("#quote-area").empty()
             console.log(data)
-            var review = data.results[0].summary_short
+            let index = Math.floor(Math.random() * data.results.length)
+            var review = data.results[index].summary_short
             var reviewBox = document.createElement("p")
             reviewBox.setAttribute("id", "review-box")
             reviewBox.textContent = review

@@ -14,11 +14,11 @@ SciFiEl.addEventListener('change', e => {
         console.log("checked");
         excludeSciFi = true;
 
-    } else { 
+    } else {
         console.log("Unchecked");
         excludeSciFi = false;
     }
-       
+
 
 });
 
@@ -54,7 +54,7 @@ ActionEL.addEventListener('change', e => {
         console.log("checked");
         excludeAction = true;
 
-} else {
+    } else {
         console.log("Unchecked");
         excludeAction = false;
     }
@@ -70,7 +70,7 @@ RomanceEL.addEventListener('change', e => {
     } else {
         console.log("Unchecked");
         excludeRomance = false;
-        
+
     }
 
 });
@@ -81,7 +81,7 @@ DramaEL.addEventListener('change', e => {
         console.log("checked");
         excludeDrama = true;
 
-    } else { 
+    } else {
         console.log("Unchecked");
         excludeDrama = false;
     }
@@ -94,44 +94,44 @@ function checkGenres() {
 
     // Create an empty array to store genre ids
     var genreids = [];
-    
+
     // Movie Genre id from API
-    if (excludeSciFi){
+    if (excludeSciFi) {
         // withoutGenre = withoutGenre.concat("878") 
         // Add/push the Sci Fi ID to the array list
-        genreids.push("878"); 
-    } 
-    if (excludeHorror){
-       // withoutGenre = withoutGenre.concat("27")
-       genreids.push("27"); 
-    } 
-    if (excludeComedy){
+        genreids.push("878");
+    }
+    if (excludeHorror) {
+        // withoutGenre = withoutGenre.concat("27")
+        genreids.push("27");
+    }
+    if (excludeComedy) {
         //withoutGenre = withoutGenre.concat("35")
         genreids.push("35")
-    } 
-    if (excludeAction){
+    }
+    if (excludeAction) {
         // Add action id
         //withoutGenre = withoutGenre.concat("28")
         genreids.push("28")
-    } 
-    if (excludeRomance){
+    }
+    if (excludeRomance) {
         //withoutGenre = withoutGenre.concat("10749")
         genreids.push("10749")
-    } 
-    if (excludeDrama){
-       // withoutGenre = withoutGenre.concat("18")
-       genreids.push("18")
     }
-    
-    // IF we have any genres in the list
-    if (genreids.length){ 
-          // THEN build the query string
-        withoutGenre = "&without_genre=" // Join the list of genre ids separated by commas;
-        console.log( withoutGenre);
+    if (excludeDrama) {
+        // withoutGenre = withoutGenre.concat("18")
+        genreids.push("18")
     }
 
-      
-} 
+    // IF we have any genres in the list
+    if (genreids.length) {
+        // THEN build the query string
+        withoutGenre = "&without_genre=" // Join the list of genre ids separated by commas;
+        console.log(withoutGenre);
+    }
+
+
+}
 
 
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
@@ -144,11 +144,11 @@ var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP";
 
 // retrievees movie review WORKING PROGRESS
 
-function getReview(){
-    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=' 
+function getReview() {
+    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key='
 
     fetch(requestUrl + nyTimesAPIKey)
-        .then(function(response) {
+        .then(function (response) {
             return response.json()
         })
         .then(function (data) {
@@ -158,7 +158,7 @@ function getReview(){
             var reviewData = document.createElement('div')
             review.append()
         })
-        .catch(function() {
+        .catch(function () {
             console.log('Error')
         })
 }
@@ -173,57 +173,69 @@ function getReview(){
 //     //getReview()
 
 //    console.log("Button clicked");
-   
+
 // });
 
 // retrieves list of movies from worst to best.
-function getMovie() {
-
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
-    .then(function(response) {
-        return response.json()
-    })
-    .then(function(data){
-        console.log(data.results)
-        $("#movieResult").empty()
-
-    for (var i = 0; i < 1; i++){
-    (data.results[Math.floor(Math.random() * data.results.length)]);
+async function getMovie() {
+    var moviearrey = [];
     
-        var myTitle = document.createElement('h3');
-
-        myTitle.textContent = data.results[i].title;
-
-        var myPoster = document.createElement('img');
-
-        myPoster.setAttribute("id","poster-URL");
-
-        myPoster.setAttribute("alt", data.results[i].title + " Movie Poster");
-
-        
-
-        if (!data.results[i].poster_path){
-            myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
-        } else {myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;}
-        
-        
-        $("#movieResult").append(myTitle)
-        $("#posterDisplay").append(myPoster);
-    }
-    
-  })
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                for (let j = 0; j < data.results.length; j++) {
+                    moviearrey.push(data.results[j])
+                }
+                
+                console.log("moviearrey", moviearrey);
+                console.log(moviearrey.length);
+            })
+            .then(function(){
+                randomrender(moviearrey)
+            })
 }
+
+function randomrender(moviearrey) {
+    $("#movieResult").empty()
+    $("#posterDisplay").empty()
+    let index = Math.floor(Math.random() * moviearrey.length)
+    let movie = moviearrey[index]
+    console.log("movie thing",movie);
+    var myTitle = document.createElement('h3');
+
+    myTitle.textContent = movie.original_title;
+
+    var myPoster = document.createElement('img');
+
+    myPoster.setAttribute("id","poster-URL");
+
+    myPoster.setAttribute("alt", movie.original_title + " Movie Poster");
+
+    if (!movie.poster_path){
+        myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
+    } else {myPoster.src = `https://image.tmdb.org/t/p/w500` + movie.poster_path;}
+
+    $("#movieResult").append(myTitle)
+    $("#posterDisplay").append(myPoster);
+}
+
+
+
+
+
 
 generateBtnEl = document.getElementById("generateBtn");
 
 //Listener for the button
 generateBtnEl.addEventListener('click', () => {
-    getReview()
+    //getReview()
     checkGenres()
     getMovie()
 
     console.log("Button clicked");
-    
+
 });
 
 

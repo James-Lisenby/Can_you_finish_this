@@ -168,7 +168,7 @@ function getMovie() {
     .then(function randomrender(response) {
     $("#title-display").empty()
     $("#poster-display").empty()
-    let index = Math.floor(Math.random() * response.length)
+    let index = Math.floor(Math.random() * data.results.length)
     let movie = response[index]
     console.log("movie thing", movie);
     var myTitle = document.createElement('p');

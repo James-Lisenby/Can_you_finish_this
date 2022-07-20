@@ -134,20 +134,13 @@ function checkGenres() {
 } 
 
 
-//Listener for the button
-// generateBtn.addEventListener('click', () => {
+var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
 
-// checkGenres()
-//      getMovie()
-
-// )};
-
-var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494"
 
 // var movie = will be the result of the randomly generated movie
 
 // Movie Review Key
-var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP"
+var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP";
 
 // retrievees movie review WORKING PROGRESS
 
@@ -170,7 +163,9 @@ function getReview(){
         })
 }
 // Generate Review
-//generateBtnEl.addEventListener('click', () => {
+
+// generateBtnEl.addEventListener('click', () => {
+
 
 
 // Generate Review
@@ -203,7 +198,9 @@ function getMovie() {
 
         myPoster.setAttribute("id","poster-URL");
 
-        myPoster.setAttribute("alt", "Movie Poster");
+        myPoster.setAttribute("alt", data.results[i].title + " Movie Poster");
+
+        
 
         if (!data.results[i].poster_path){
             myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"

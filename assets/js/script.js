@@ -228,46 +228,45 @@ generateBtnEl.addEventListener('click', () => {
 // Generates random movie.
 
 
-function storeRandomMovie() {
-    // var randomMovie = results of randomley generated movie,
-    localStorage.setItem('randomMovie', JSON.stringify(randomMovie));
-}
+
+
 
 var saveBtn = document.getElementById("saveBtn");
 saveBtn = document.addEventListener('click', addToList);
 
+
+
+
 function addToList() {
-    var returnValue = document.getElementById('title-display').textContent,
-        listNode = document.getElementById("savedList"),
-        liNode = document.createElement("li"),
-        txtNode = document.createTextNode(returnValue);
-    liNode.appendChild(txtNode);
-    listNode.appendChild(liNode);
+    var returnValue = document.getElementById('title-display').textContent;
+    $('<li>' + returnValue.textContent + '<li>').appendTo('#savedList');
     storeSaved();
-}
+
+};
+
 
 function storeSaved() {
     savedMovies = document.getElementById('savedList').textContent;
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-    console.log(savedMovies);
+    $('#title-display').textContent.empty();
+
+
 };
 
-window.onload = renderList();
 
 function renderList() {
-    var savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
-    listNode = document.getElementById("savedList");
-    for (var i = 0; i < savedMovies.length; i++) {
-        liNode = document.createElement("li");
-        txtNode = document.createTextNode(savedMovies);
-        liNode.appendChild(txtNode);
-        listNode.appendChild(liNode);
-    }
+    // var savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+    var savedMovies = localStorage.getItem('savedMovies');
+    $('<li>' + savedMovies + '<li>').appendTo('#savedList');
+
+
+
+    // listNode = document.getElementById("savedList");
+    // liNode = document.createElement("li");
+    // txtNode = document.createTextNode(savedMovies);
+    // liNode.appendChild(txtNode);
+    // listNode.appendChild(liNode);
+
 };
-// Adds result to "results" list.
 
-// // tmdb click re-direct
-// $("#tmdb-logo").addEventListener('click', () =>{
-
-
-// });storeSaved();
+window.addEventListener('load', renderList);

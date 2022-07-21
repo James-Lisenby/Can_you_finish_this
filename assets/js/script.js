@@ -117,7 +117,7 @@ function checkGenres() {
         console.log(withoutGenre);
     }
 
-} 
+}
 
 // retrieves NYT movie
 function getReview() {
@@ -147,6 +147,48 @@ function getReview() {
 
 // retrieves the worst movie and its poster image.
 function getMovie() {
+
+    var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&with_original_language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function randomrender(data) {
+            $("#title-display").empty()
+            $("#poster-display").empty()
+            let index = Math.floor(Math.random() * data.results.length)
+            let movie = data.results[index]
+            console.log("movie thing", movie);
+            var myTitle = document.createElement('p');
+
+            myTitle.textContent = movie.original_title;
+
+            var myPoster = document.createElement('img');
+
+            myPoster.setAttribute("id", "poster-URL");
+
+            // myPoster.setAttribute("href", ""data.results[i].)
+
+            if (!movie.poster_path) {
+                myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
+            } else { myPoster.src = `https://image.tmdb.org/t/p/w500` + movie.poster_path; }
+
+
+            $("#title-display").append(myTitle);
+            $("#poster-display").append(myPoster);
+        })
+
+    //     function(data) {
+    //     console.log(data.results)
+    //     $("#title-display").empty()
+    //     $("#poster-display").empty()
+
+    // for (var i = 0; i < 1; i++){
+    // (data.results[Math.floor(Math.random() * data.results.length)]);
+
+    //     var myTitle = document.createElement('p');
+
+
 
 // API Key for The Movie Database:
 var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
@@ -186,6 +228,7 @@ fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&wi
         $("#title-display").append(myTitle);
         $("#poster-display").append(myPoster);
     })
+
 }
 
 
@@ -200,24 +243,55 @@ generateBtnEl.addEventListener('click', () => {
 });
 
 
+
+// var movie = will be the result of the randomly generated movie
+
+
+// Generates random movie.
+
+
+
+
+
+var saveBtn = document.getElementById("saveBtn");
+saveBtn.addEventListener('click', addToList);
+
+
+
+
 function storeRandomMovie() {
     // var randomMovie = results of randomley generated movie,
     localStorage.setItem('randomMovie', JSON.stringify(randomMovie));
 }
 
+
 function addToList() {
-    var returnValue = document.getElementById(displayRandom).value,
-        // displayRandom will be the value of the displaying container.
-        listNode = document.getElementById("list ID"),
+    var returnValue = document.getElementById('title-display').textContent;
+    listNode = document.getElementById("savedList"),
         liNode = document.createElement("li"),
         txtNode = document.createTextNode(returnValue);
     liNode.appendChild(txtNode);
     listNode.appendChild(liNode);
-}
-// Adds result to "results" list.
+    storeSaved();
 
-// // tmdb click re-direct
-// $("#tmdb-logo").addEventListener('click', () =>{
+};
 
 
-// });
+function storeSaved() {
+    savedMovies = document.getElementById('savedList').textContent;
+    localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+
+};
+
+
+function renderList() {
+    var savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+    listNode = document.getElementById("savedList"),
+        liNode = document.createElement("li"),
+        txtNode = document.createTextNode(savedMovies);
+    liNode.appendChild(txtNode);
+    listNode.appendChild(liNode);
+
+};
+
+window.addEventListener('load', renderList);

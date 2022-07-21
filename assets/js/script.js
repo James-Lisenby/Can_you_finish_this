@@ -13,13 +13,10 @@ SciFiEl.addEventListener('change', e => {
     if (e.target.checked) {
         console.log("checked");
         excludeSciFi = true;
-
     } else {
         console.log("Unchecked");
         excludeSciFi = false;
     }
-
-
 });
 
 var excludeHorror = false;
@@ -27,12 +24,10 @@ HorrorEl.addEventListener('change', e => {
     if (e.target.checked) {
         console.log("checked");
         excludeHorror = true;
-
     } else {
         console.log("Unchecked");
         excludeHorror = false;
     }
-
 });
 
 var excludeComedy = false;
@@ -40,12 +35,10 @@ ComedyEL.addEventListener('change', e => {
     if (e.target.checked) {
         console.log("checked");
         excludeComedy = true;
-
     } else {
         console.log("Unchecked");
         excludeComedy = false;
     }
-
 });
 
 var excludeAction = false;
@@ -53,12 +46,10 @@ ActionEL.addEventListener('change', e => {
     if (e.target.checked) {
         console.log("checked");
         excludeAction = true;
-
     } else {
         console.log("Unchecked");
         excludeAction = false;
     }
-
 });
 
 var excludeRomance = false;
@@ -66,13 +57,10 @@ RomanceEL.addEventListener('change', e => {
     if (e.target.checked) {
         console.log("checked");
         excludeRomance = true;
-
     } else {
         console.log("Unchecked");
         excludeRomance = false;
-
     }
-
 });
 
 var excludeDrama = false;
@@ -80,14 +68,13 @@ DramaEL.addEventListener('change', e => {
     if (e.target.checked) {
         console.log("checked");
         excludeDrama = true;
-
     } else {
         console.log("Unchecked");
         excludeDrama = false;
     }
-
 });
 
+// Function to check which genres have been marked for exclusion
 function checkGenres() {
 
     withoutGenre = "";
@@ -132,25 +119,25 @@ function checkGenres() {
 
 } 
 
-var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
-
-// Movie Review Key
-var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP";
-var reviewBox = document.getElementById("#review-box")
-// retrieves NYT movie review WORK IN PROGRESS
-
+// retrieves NYT movie
 function getReview() {
-    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key='
+    var requestUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?&api-key=';
 
+// API Key for The NY Times
+    var nyTimesAPIKey = "TrbXriO3tWFp4GHZ2qMXxaxw0jKnJQwP";
     fetch(requestUrl + nyTimesAPIKey)
         .then(function (response) {
             return response.json()
         })
         .then(function (data) {
+            $("#quote-area").empty()
             console.log(data)
-            var review = data.results[0].summary_short
-            console.log(review)
-            reviewBox.innerHTML() = review
+            let index = Math.floor(Math.random() * data.results.length)
+            var review = data.results[index].summary_short
+            var reviewBox = document.createElement("p")
+            reviewBox.setAttribute("id", "review-box")
+            reviewBox.textContent = review
+            $("#quote-area").append(reviewBox)
         })
         .catch(function () {
             console.log('Error')
@@ -161,74 +148,56 @@ function getReview() {
 // retrieves the worst movie and its poster image.
 function getMovie() {
 
-  fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&with_original_language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
+// API Key for The Movie Database:
+var tmdbAPIKey = "1564618e239b625cf432bde81f3e2494";
+
+// API Call
+fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&with_original_language=en&include_adult=false&sort_by=` + `popularity.asc` + `&include_video=false&page=1&with_watch_monetization_types=flatrate` + withoutGenre)
+
     .then(function(response) {
         return response.json()
     })
-    .then(function(data){
-        console.log(data.results)
-        $("#title-display").empty()
-        $("#poster-display").empty()
+    .then(function randomrender(data) {
 
-    for (var i = 0; i < 1; i++){
-    (data.results[Math.floor(Math.random() * data.results.length)]);
-    
-        var myTitle = document.createElement('p');
+// Making sure the divs are emptied before printing new info
+    $("#title-display").empty();
+    $("#poster-display").empty();
 
+// Cycling through the results sent to us in response to our query
+    let index = Math.floor(Math.random() * data.results.length);
+    let movie = data.results[index];
+    console.log("Movie Info", movie);
 
-function randomrender(moviearrey) {
-    $("#movieResult").empty()
-    $("#posterDisplay").empty()
-    let index = Math.floor(Math.random() * moviearrey.length)
-    let movie = moviearrey[index]
-    console.log("movie thing",movie);
-    var myTitle = document.createElement('h3');
-
+// Creating title Element and adding its text and id
+    var myTitle = document.createElement('p');
+    myTitle.setAttribute("id", "title-text");
     myTitle.textContent = movie.original_title;
 
+// Creating movie poster Element and adding its id
     var myPoster = document.createElement('img');
-
     myPoster.setAttribute("id","poster-URL");
 
-
-        // myPoster.setAttribute("href", ""data.results[i].)
-
+// Assigning the actual poster image to the img element, if it exists. If not, assigning a generic poster
+    if (!movie.poster_path){
+        myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
+    } else {myPoster.src = `https://image.tmdb.org/t/p/w500` + movie.poster_path};
         
-
-        if (!data.results[i].poster_path){
-            myPoster.src = "assets/images/blank-movie-poster_1989181.jpg"
-        } else {myPoster.src = `https://image.tmdb.org/t/p/w500` + data.results[i].poster_path;}
-        
-        
-        $("#title-display").append(myTitle)
+// appending the new elements to the existing divs
+        $("#title-display").append(myTitle);
         $("#poster-display").append(myPoster);
-    }
-    
-  })
+    })
 }
-
-
-
-
 
 
 generateBtnEl = document.getElementById("generateBtn");
 
-//Listener for the button
+//Listener for the Random Movie button
 generateBtnEl.addEventListener('click', () => {
-    //getReview()
+    getReview()
     checkGenres()
     getMovie()
-
-    console.log("Button clicked");
-
+    console.log("Random Movie clicked");
 });
-
-
-// var movie = will be the result of the randomly generated movie
-
-
-// Generates random movie.
 
 
 function storeRandomMovie() {

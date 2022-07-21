@@ -80,7 +80,6 @@ body {
 }
 
 #quoteBox {
-
     border: 2px dashed black;
     display: flex;
     position: relative;
@@ -99,5 +98,4 @@ footer {
 
 #tmdb-logo {
     height: 20px;
-
 }

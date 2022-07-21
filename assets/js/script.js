@@ -188,7 +188,6 @@ fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + tmdbAPIKey + `&wi
     })
 }
 
-
 generateBtnEl = document.getElementById("generateBtn");
 
 //Listener for the Random Movie button

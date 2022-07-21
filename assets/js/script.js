@@ -232,14 +232,18 @@ generateBtnEl.addEventListener('click', () => {
 
 
 var saveBtn = document.getElementById("saveBtn");
-saveBtn = document.addEventListener('click', addToList);
+saveBtn.addEventListener('click', addToList);
 
 
 
 
 function addToList() {
     var returnValue = document.getElementById('title-display').textContent;
-    $('<li>' + returnValue.textContent + '<li>').appendTo('#savedList');
+    listNode = document.getElementById("savedList"),
+        liNode = document.createElement("li"),
+        txtNode = document.createTextNode(returnValue);
+    liNode.appendChild(txtNode);
+    listNode.appendChild(liNode);
     storeSaved();
 
 };
@@ -248,24 +252,17 @@ function addToList() {
 function storeSaved() {
     savedMovies = document.getElementById('savedList').textContent;
     localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-    $('#title-display').textContent.empty();
-
 
 };
 
 
 function renderList() {
-    // var savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
-    var savedMovies = localStorage.getItem('savedMovies');
-    $('<li>' + savedMovies + '<li>').appendTo('#savedList');
-
-
-
-    // listNode = document.getElementById("savedList");
-    // liNode = document.createElement("li");
-    // txtNode = document.createTextNode(savedMovies);
-    // liNode.appendChild(txtNode);
-    // listNode.appendChild(liNode);
+    var savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+    listNode = document.getElementById("savedList"),
+        liNode = document.createElement("li"),
+        txtNode = document.createTextNode(savedMovies);
+    liNode.appendChild(txtNode);
+    listNode.appendChild(liNode);
 
 };
 

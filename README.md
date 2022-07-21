@@ -33,3 +33,6 @@ This project is unlicensed.
 ## Acknowledgments
 
 This project was made possible by the [Materialize.css](https://materializecss.com/) framework, along with [The Movie Database API](https://developers.themoviedb.org/3) and [The New York Times Movie Review API](https://developer.nytimes.com/docs/movie-reviews-api/1/overview)
+
+## Site Demonstration
+![Site Demo](assets/images/site-demo.png)
